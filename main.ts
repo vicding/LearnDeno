@@ -1,6 +1,7 @@
 import { parse } from "parse";
+export { add };
 
-const tablename = parse(Deno.args);
+const tablename = parse(Deno.args).t;
 
 console.log(tablename);
 
@@ -10,6 +11,10 @@ if (!tablename) {
 }
 
 const API_BASE_URL = 'http://localhost/api';
+
+function add(a: number, b: number): number {
+    return a + b;
+}
 
 async function fetchApiEndpoints() {
     const response = await fetch(API_BASE_URL);
@@ -46,10 +51,10 @@ async function main() {
         const jsonld = convertToJSONLD(tablename, data);
 
         console.log(JSON.stringify(jsonld, null, 2));
-    } catch (error) {
+    } catch (error: any) {
         console.error(error.message);
         Deno.exit(1);
     }
 }
 
-main();
+main().then(_r => console.log('Done'));

@@ -3,7 +3,7 @@
     "dev": "deno run --watch ./main.ts -t polity"
   },
   "imports": {
-    "parse": "https://deno.land/std@0.114.0/flags/mod.ts",
+    "@std/parse": "@std/parse",
     "@std/assert": "jsr:@std/assert",
     "@std/jsonc": "jsr:@std/jsonc"
   }
